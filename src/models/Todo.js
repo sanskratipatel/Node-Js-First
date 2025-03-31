@@ -9,16 +9,20 @@ const TodoSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
+    }, 
+    description:{ 
+        type:String, 
+        default:null
     },
     status:{ 
-        type:Boolean,
+        type:String,
         enum:["PENDING","Completed"],
         default:"PENDING"
     },
-    subtodos:[{
+    subTodos:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"SubTodos",
-        default:null
+        ref:"SubTodo",
+        default:[]
     }]
 
 
