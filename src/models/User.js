@@ -6,22 +6,33 @@ const UserSchema = new mongoose.Schema({
         type:String, 
         unique:true,
         required:[true, "Enter username"]
-    } ,
+    },
+
     email :{ 
         type:String,
         unique:true,
         required:[true,"Enter Email please"]
-    } ,
+    },
+
     password :{
         type:String, 
         required:[true, "Enter password"],
         minlength: 6
 
     },
-    todos: [{ 
-        type:mongoose.Schema.Types.ObjectId,
-        ref :"Todo"
-    }],
+
+   role: { 
+    type:String,
+    enum:["admin","user","manager"] ,
+    default:"user"
+   }, 
+
+   status:{ 
+    type :String,
+    enum :["active","inactive","suspended"] , 
+    default:"active",
+   }
+
 },{ timestamps: true });
 
 
